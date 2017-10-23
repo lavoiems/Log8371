@@ -6,9 +6,7 @@ const MIN_N_WORKERS = 51;
 let total_workers = 0;
 
 function invoke(file, offset, n_iter) {
-  console.log("File :" + file);
-  console.log("Offset :" + offset);
-  console.log("N iter :" + n_iter);
+  console.log("Starting worker");
   const lambda = new AWS.Lambda({ apiVersion: '2015-03-31', region: 'ca-central-1' });
   const params = {
     FunctionName: 'countOccurence',
