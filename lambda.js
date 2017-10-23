@@ -60,6 +60,10 @@ function process(fns, res = []) {
   const head = _.head(fns);
   const tail = _.tail(fns);
 
+  if (fns.length % 10 == 0) {
+    console.log("Functions remaining: " + fns.length);
+  }
+
   return head().then(newRes => process(tail, newRes));//res.push(newRes)));
 }
 
