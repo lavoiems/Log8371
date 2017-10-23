@@ -1,0 +1,7 @@
+{
+  "name": "countOccurence",
+  "description":
+    "Count the occurence of each word",
+  "runtime": "python3.5",
+  "role": "arn:aws:iam::568889440304:role/keenoa_lambda_function"
+}

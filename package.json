@@ -1,0 +1,16 @@
+{
+  "name": "arch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lambda.js",
+  "dependencies": {
+    "aws-sdk": "^2.138.0",
+    "lodash": "^4.17.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
