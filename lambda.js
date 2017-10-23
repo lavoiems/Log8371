@@ -6,9 +6,9 @@ const MIN_N_WORKERS = 51;
 let total_workers = 0;
 
 function invoke(file, offset, n_iter) {
-  console.log(file);
-  console.log(offset);
-  console.log(n_iter);
+  console.log("File :" + file);
+  console.log("Offset :" + offset);
+  console.log("N iter :" + n_iter);
   const lambda = new AWS.Lambda({ apiVersion: '2015-03-31', region: 'ca-central-1' });
   const params = {
     FunctionName: 'countOccurence',
@@ -49,16 +49,14 @@ function aggregate(initTime) {
       return process(fn);
     })
     .then(() => {
-      console.log(total_workers);
       const endTime = (new Date()).getTime();
       const execTime = endTime - initTime;
-      console.log(execTime);
+      console.log("Total execution time: " + execTime);
     })
     .catch(err => console.log(err));
 }
 
 function process(fns, res = []) {
-  console.log(fns);
   if (fns.length === 0) return Promise.resolve(res);
 
   const head = _.head(fns);
@@ -83,7 +81,6 @@ function execute(max_n_iters) {
   const s3 = new AWS.S3({apiVersion: '2006-03-01'});
   s3.listObjectsV2({Bucket: "log4410-enwiki"}).promise()
     .then(contents => {
-      console.log(contents);
       const initTime = (new Date()).getTime();
       const promises = _.map(contents['Contents'], content =>
           split(content, max_n_iters)
