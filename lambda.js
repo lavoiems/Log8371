@@ -13,9 +13,9 @@ function invoke(file, offset, n_iter) {
     InvocationType: 'RequestResponse',
     Payload: JSON.stringify({"file": file, "offset": offset, "n_iter": n_iter})
   };
-  return lambda
-    .invoke(params)
-    .promise()
+  //return lambda
+  //  .invoke(params)
+  //  .promise()
 }
 
 
@@ -35,7 +35,7 @@ function split(content, maxNiters) {
 function aggregate(initTime) {
   console.log("Total workers: " + total_workers);
   const invTime = (new Date()).getTime();
-  console.log("Invokation time: " + invTime - initTime);
+  console.log("Invokation time: " + (invTime - initTime).toString());
   const s3 = new AWS.S3({apiVersion: '2006-03-01'});
   let allItems = {};
 
@@ -49,7 +49,7 @@ function aggregate(initTime) {
     .then(() => {
       const endTime = (new Date()).getTime();
       const execTime = endTime - initTime;
-      console.log("Total execution time: " + execTime);
+      console.log("Total execution time: " + execTime.toString());
     })
     .catch(err => console.log(err));
 }
